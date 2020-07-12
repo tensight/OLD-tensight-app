@@ -3,12 +3,12 @@
 </script>
 
 <svelte:head>
-	<title>Index - Example JungleJS App</title>
+	<title>Tensight - Home of Asian Sports</title>
 </svelte:head>
 
 <Nav page="/"/>
 <main>
-	<h1>Welcome!</h1>
+	<h1>The Global Home for Sports</h1>
 </main>
 
 <style>
