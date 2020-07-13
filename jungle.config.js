@@ -4,6 +4,7 @@ const resolve = require('@rollup/plugin-node-resolve').default;
 const commonjs = require('@rollup/plugin-commonjs');
 const ssr = require('rollup-plugin-svelte-ssr');
 
+const sveltePreprocess = require('svelte-preprocess');
 const { junglePreprocess } = require('junglejs');
 
 const production = !!process.env.PRODUCTION;
@@ -20,6 +21,9 @@ module.exports = {
                     dev: !production,
                     hydratable: true,
                     preprocess: [
+                        sveltePreprocess({
+                            postcss: true
+                        }),
                         junglePreprocess,
                     ],
                 }),
@@ -85,6 +89,31 @@ module.exports = {
         }
     },
     dataSources: [
+        {
+            format: "json", name: "athletes", items: [
+                {
+                    id: 1,
+                    firstName: 'Jordan',
+                    lastName: 'Clarkson',
+                    sport: 'basketball',
+                    currently: 'Point Guard for the Cleveland Cavaliers'
+                },
+                {
+                    id: 2,
+                    firstName: 'Shohei',
+                    lastName: 'Ohtani',
+                    sport: 'baseball',
+                    currently: 'DH for the Los Angeles Angels'
+                },
+                {
+                    id: 3,
+                    firstName: 'Naomi',
+                    lastName: 'Osaka',
+                    sport: 'tennis',
+                    currently: "Womens\' Singles Tennis Player"
+                },
+            ],
+        },
         {
             format: "json", name: "author", items: [
                 { id: 1, firstName: 'Tom', lastName: 'Coleman' },
